@@ -1,5 +1,4 @@
 import _ from "lodash";
-import now from 'performance-now';
 import { update } from 'immutable';
 import produce from 'immer';
 import { update as lpdate } from 'lodash/fp';
