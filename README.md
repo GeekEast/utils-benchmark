@@ -13,3 +13,6 @@
 
 ### Choice
 - Lodash/fp
+
+### References
+- [Using Immutable.JS with Redux](https://redux.js.org/recipes/using-immutablejs-with-redux/)

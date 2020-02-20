@@ -13,7 +13,7 @@ const lodashReducer = (todos, id) => lpdate([id, 'complete'], x => !x, todos)
 const seamlessImmutableReducer = (todos, id) => Immutable(todos).updateIn([id, 'complete'], x => !x);
 
 // 初始化数据
-const data = generateDate(100000);
+const data = generateDate(1000000);
 
 // immutable是否满足检测:
 // const es6G = es6Reducer(data, '5000');
@@ -41,6 +41,6 @@ const getAverage = (count, reducer, data, id) => {
 getAverage(10, es6Reducer, data, '5000')
 getAverage(10, lodashReducer, data, '5000')
 getAverage(10, immutableJsReducer, data, '5000')
-getAverage(10, immerReducer, data, '5000')
-getAverage(10, seamlessImmutableReducer, data, '5000');
+// getAverage(10, immerReducer, data, '5000')
+// getAverage(10, seamlessImmutableReducer, data, '5000');
 
