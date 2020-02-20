@@ -14,7 +14,7 @@ const getPerformance = (callback, ...params) => {
   const start = now();
   callback(...params)
   const end = now();
-  console.log((end - start).toFixed(3))
+  return (end - start).toFixed(3)
 }
 
 
@@ -24,8 +24,18 @@ const immerReducer = (todos, id) => produce(todos, draft => {
   draft[id].complete = true
 })
 
-getPerformance(es5Reducer, generateDate(100000), '5000'); // 32
-getPerformance(immutableJsReducer, generateDate(100000), '5000'); // 14
-getPerformance(immerReducer, generateDate(100000), '5000'); // 14
+const data = generateDate(100000);
 
+const getAverage = (count, reducer, data, id) => {
+  const res: any = [];
+  for (let i = 0; i < count; i++) {
+    const a = getPerformance(reducer, data, id)
+    res.push(parseFloat(a))
+  }
+  console.log(reducer.name, ': ',_.mean(res));
+}
+
+getAverage(10, es5Reducer, data, '5000')
+getAverage(10, immutableJsReducer, data, '5000')
+getAverage(10, immerReducer, data, '5000')
 
