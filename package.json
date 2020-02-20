@@ -8,10 +8,12 @@
   "dependencies": {
     "@types/immutable": "3.8.7",
     "@types/lodash": "4.14.149",
+    "@types/seamless-immutable": "^7.1.11",
     "immer": "5.3.6",
     "immutable": "4.0.0-rc.12",
     "lodash": "4.17.15",
     "performance-now": "^2.1.0",
+    "seamless-immutable": "^7.1.4",
     "ts-node": "^8.6.2",
     "typescript": "^3.7.5"
   },
