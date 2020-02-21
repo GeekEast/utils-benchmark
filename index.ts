@@ -4,12 +4,14 @@ import produce from 'immer';
 import { update as lpdate } from 'lodash/fp';
 import Immutable from 'seamless-immutable';
 import { generateDate, getPerformance } from "./utils";
+import { set, lensPath } from 'ramda';
 
 // 不可变库updater
-const es6Reducer = (todos, id) => { return { ...todos, [id]: { ...todos[id], complete: !todos[id].complete } } }
 const immutableJsReducer = (todos, id) => update(todos, id, (val: any) => update(val, 'complete', v => !v))
-const immerReducer = (todos, id) => produce(todos, draft => { draft[id].complete = true })
 const lodashReducer = (todos, id) => lpdate([id, 'complete'], x => !x, todos)
+const ramdaReducer = (todos, id) => set(lensPath([id,'complete']), true, todos);
+const es6Reducer = (todos, id) => { return { ...todos, [id]: { ...todos[id], complete: !todos[id].complete } } }
+const immerReducer = (todos, id) => produce(todos, draft => { draft[id].complete = true })
 const seamlessImmutableReducer = (todos, id) => Immutable(todos).updateIn([id, 'complete'], x => !x);
 
 // 初始化数据
@@ -41,6 +43,7 @@ const getAverage = (count, reducer, data, id) => {
 getAverage(10, es6Reducer, data, '5000')
 getAverage(10, lodashReducer, data, '5000')
 getAverage(10, immutableJsReducer, data, '5000')
-// getAverage(10, immerReducer, data, '5000')
-// getAverage(10, seamlessImmutableReducer, data, '5000');
+getAverage(10, ramdaReducer, data, '5000')
+getAverage(10, immerReducer, data, '5000')
+getAverage(10, seamlessImmutableReducer, data, '5000');
 
