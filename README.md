@@ -1,5 +1,7 @@
-### Start
-- `yarn` && `yarn start`
+
+## Immutable
+### Test
+- `ts-node immutable.ts`
 
 ### Result
 
@@ -17,3 +19,16 @@
 
 ### References
 - [Using Immutable.JS with Redux](https://redux.js.org/recipes/using-immutablejs-with-redux/)
+
+## Deep Compare
+### Test
+- `ts-node deepEqual.ts`
+
+### Result
+
+- lodash/isEqual  1494.232
+- fast-deep-equal:  343.625
+- react-fast-compare:   426.713
+
+### Choice:
+- fast-deep-equal

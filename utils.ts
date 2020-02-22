@@ -10,7 +10,7 @@ export const generateDate = (count) => {
 
 export const getPerformance = (callback, ...params) => {
   const start = now();
-  console.log(callback(...params));
+  callback(...params);
   const end = now();
   return (end - start).toFixed(3)
 }
