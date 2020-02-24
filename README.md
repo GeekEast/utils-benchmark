@@ -50,10 +50,69 @@ Spend time :  6245 ms
 ```
 
 ### Choice
-- Lodash/fp
+- `Lodash/fp`: simple, fast and already included in production line.
 
 ### References
 - [Using Immutable.JS with Redux](https://redux.js.org/recipes/using-immutablejs-with-redux/)
+
+## Shallow Compare
+### Test
+- `ts-node shallowEqual.ts`
+
+### Result
+```json
+------equal result-------
+RAM        :  52 MB
+HeapTotal  :  40 MB
+HeapUsed   :  41 MB
+External   :  0 Byte
+CPU        :  322.411 ms
+Spend time :  128 ms
+------shallowEqual result-------
+RAM        :  92 MB
+HeapTotal  :  81 MB
+HeapUsed   :  82 MB
+External   :  0 Byte
+CPU        :  167.342 ms
+Spend time :  167 ms
+------shallowEqual result-------
+RAM        :  91 MB
+HeapTotal  :  82 MB
+HeapUsed   :  93 MB
+External   :  0 Byte
+CPU        :  1417.513 ms
+Spend time :  1414 ms
+------shallowEqual result-------
+RAM        :  88 MB
+HeapTotal  :  80 MB
+HeapUsed   :  82 MB
+External   :  0 Byte
+CPU        :  146.997 ms
+Spend time :  146 ms
+------comparator result-------
+RAM        :  91 MB
+HeapTotal  :  81 MB
+HeapUsed   :  82 MB
+External   :  0 Byte
+CPU        :  395.511 ms
+Spend time :  181 ms
+------shallow result-------
+RAM        :  32 MB
+HeapTotal  :  32 MB
+HeapUsed   :  41 MB
+External   :  0 Byte
+CPU        :  70.103 ms
+Spend time :  70 ms
+------isEqual result-------
+RAM        :  41 MB
+HeapTotal  :  40 MB
+HeapUsed   :  41 MB
+External   :  0 Byte
+CPU        :  74.989 ms
+Spend time :  74 ms
+```
+### Choice:
+- `shallow-equals`
 
 ## Deep Compare
 ### Test
