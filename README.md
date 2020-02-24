@@ -62,57 +62,43 @@ Spend time :  6245 ms
 ### Result
 ```json
 ------equal result-------
-RAM        :  52 MB
-HeapTotal  :  40 MB
+RAM        :  59 MB
+HeapTotal  :  42 MB
 HeapUsed   :  41 MB
 External   :  0 Byte
-CPU        :  322.411 ms
-Spend time :  128 ms
+CPU        :  310.102 ms
+Spend time :  131 ms
 ------shallowEqual result-------
-RAM        :  92 MB
-HeapTotal  :  81 MB
+RAM        :  96 MB
+HeapTotal  :  82 MB
 HeapUsed   :  82 MB
 External   :  0 Byte
-CPU        :  167.342 ms
-Spend time :  167 ms
+CPU        :  147.592 ms
+Spend time :  148 ms
 ------shallowEqual result-------
-RAM        :  91 MB
-HeapTotal  :  82 MB
+RAM        :  93 MB
+HeapTotal  :  81 MB
 HeapUsed   :  93 MB
 External   :  0 Byte
-CPU        :  1417.513 ms
-Spend time :  1414 ms
+CPU        :  1303.939 ms
+Spend time :  1296 ms
 ------shallowEqual result-------
-RAM        :  88 MB
-HeapTotal  :  80 MB
-HeapUsed   :  82 MB
-External   :  0 Byte
-CPU        :  146.997 ms
-Spend time :  146 ms
-------comparator result-------
-RAM        :  91 MB
+RAM        :  85 MB
 HeapTotal  :  81 MB
 HeapUsed   :  82 MB
 External   :  0 Byte
-CPU        :  395.511 ms
+CPU        :  144.848 ms
+Spend time :  144 ms
+------comparator result-------
+RAM        :  86 MB
+HeapTotal  :  81 MB
+HeapUsed   :  82 MB
+External   :  0 Byte
+CPU        :  400.005 ms
 Spend time :  181 ms
-------shallow result-------
-RAM        :  32 MB
-HeapTotal  :  32 MB
-HeapUsed   :  41 MB
-External   :  0 Byte
-CPU        :  70.103 ms
-Spend time :  70 ms
-------isEqual result-------
-RAM        :  41 MB
-HeapTotal  :  40 MB
-HeapUsed   :  41 MB
-External   :  0 Byte
-CPU        :  74.989 ms
-Spend time :  74 ms
 ```
 ### Choice:
-- `shallow-equals`
+- `fast-shallow-equal`
 
 ## Deep Compare
 ### Test
@@ -149,7 +135,7 @@ Spend time :  45 ms
 ### Self-Made `smartStrictCompare`
 ```javascript
 import deepEqual from 'fast-deep-equal';
-import shallowCompare from 'react-addons-shallow-compare';
+import { equal } from 'fast-shallow-equal';
 
 const getType = (sth) => {
   return Object.prototype.toString.call(sth).slice(8, -1);
@@ -171,7 +157,7 @@ export const smartStrictEqual = (prev, next) => {
   if (prevType === 'Array') return deepEqual(prev, next);
   if (prevType !== 'Object') return Object.is(prev, next)
   if (deepObject(prev) || deepObject(next)) return deepEqual(prev, next)
-  return shallowCompare(prev, next)
+  return equal(prev, next)
 }
 ```
 
