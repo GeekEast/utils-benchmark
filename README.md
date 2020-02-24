@@ -85,7 +85,7 @@ Spend time :  45 ms
 ```
 
 ### Choice:
-- fast-deep-equal
+- `fast-deep-equal`
 
 ### Self-Made `smartStrictCompare`
 ```javascript
@@ -148,7 +148,7 @@ Spend time :  3741 ms
 ### Choice
 - `sortKeysBy`: **significant** save `memory` in client
 
-### Utils Cook
+### Self Made `sortKeysBy`
 ```javascript
 import sort from 'fast-sort';
 import _ from 'lodash';
