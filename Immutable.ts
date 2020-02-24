@@ -3,7 +3,7 @@ import { update } from 'immutable';
 import produce from 'immer';
 import { update as lpdate } from 'lodash/fp';
 import Immutable from 'seamless-immutable';
-import { generateDate, getPerformance } from "./utils";
+import { generateData, getPerformance } from "./utils";
 import { set, lensPath } from 'ramda';
 
 // 不可变库updater
@@ -15,7 +15,7 @@ const immerReducer = (todos, id) => produce(todos, draft => { draft[id].complete
 const seamlessImmutableReducer = (todos, id) => Immutable(todos).updateIn([id, 'complete'], x => !x);
 
 // 初始化数据
-const data = generateDate(1000000);
+const data = generateData(1000000);
 
 // immutable是否满足检测:
 // const es6G = es6Reducer(data, '5000');
