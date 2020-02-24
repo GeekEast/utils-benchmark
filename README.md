@@ -32,3 +32,26 @@
 
 ### Choice:
 - fast-deep-equal
+
+## Sort Keys By Attributes
+### Test
+- `ts-node sorting.ts`
+
+### Result
+- `fast-sort`: 5298.712
+- `lodash/sortBy`: 3852.827
+
+### Choice
+- Lodash/sortBy
+
+### Utils Cook
+```javascript
+import _ from 'lodash';
+export const lodash_sortKeysBy = (data, bys) => {
+  const keys = Object.keys(data);
+  const orders = _.values(bys);
+  const attr_getters = _.map(_.keys(bys), attr => key => _.get(data, [key, attr]))
+  return _.orderBy(keys, attr_getters, orders);
+}
+```
+

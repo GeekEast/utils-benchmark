@@ -115,6 +115,11 @@ fast-deep-equal@^3.1.1:
   resolved "https://registry.yarnpkg.com/fast-deep-equal/-/fast-deep-equal-3.1.1.tgz#545145077c501491e33b15ec408c294376e94ae4"
   integrity sha512-8UEa58QDLauDNfpbrX55Q9jrGHThw2ZMdOky5Gl1CDtVeJDPVrG4Jxx1N8jw2gkWaff5UUuX1KJd+9zGe2B+ZA==
 
+fast-sort@^2.1.1:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/fast-sort/-/fast-sort-2.1.1.tgz#b44f908b5bc28c442986682098eb879dba7f07f9"
+  integrity sha512-X8DNrUzoejZZ+AdAHCVXdKHUrbzz57jKG5/prsKKzyaVKwzSwzm0HQ76cPdo69LObWDShJ77Cn1nPMSXP87FOQ==
+
 function-bind@^1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/function-bind/-/function-bind-1.1.1.tgz#a56899d3ea3c9bab874bb9773b7c5ede92f4895d"
