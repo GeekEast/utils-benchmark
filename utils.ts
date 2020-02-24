@@ -18,10 +18,10 @@ export const generateNewData = (count) => {
 }
 
 export const getPerformance = (callback, ...params) => {
-  const m = new jm({ isPrint: false });
+  const m = new jm({ isPrint: true });
   callback(...params);
-  const meter = m.stop()
-  return meter;
+  console.log('------' + callback.name + ' result-------')
+  m.stop()
 }
 
 
@@ -38,31 +38,38 @@ const sleep = (ms) => {
   } while (currentDate - date < ms);
 }
 
-
-export const getAverage = (count, callback, ...params) => {
-  const RAM = <any>[];
-  const HeapTotal = <any>[];
-  const HeapUsed = <any>[];
-  const External = <any>[];
-  const CPU = <any>[];
-  const Time = <any>[]
-  for (let i = 0; i < count; i++) {
-    const { diffRAM, diffHeapTotal, diffExternal, diffHeapUsed, diffCPU, diffTime } = getPerformance(callback, ...params)
-    RAM.push(parse(diffRAM, -2))
-    HeapTotal.push(parse(diffHeapTotal, -2))
-    HeapUsed.push(parse(diffHeapUsed, -2))
-    External.push(parse(diffExternal, -4))
-    CPU.push(diffCPU)
-    Time.push(diffTime)
+export const test = (fs, ...params) => {
+  for (let i =0; i< fs.length; i++){
+    getPerformance(fs[i], ...params);
     sleep(2000);
   }
-  const res = {
-    RAM: _.mean(RAM) + ' MB',
-    HeapTotal: _.mean(HeapTotal) + 'MB',
-    HeapUsed: _.mean(HeapUsed) + 'MB',
-    External: _.mean(External) + 'Byte',
-    CPU: _.mean(CPU) + 'ms',
-    SpendTime: _.mean(Time) + 'ms',
-  }
-  console.log(callback.name, ': ', res);
 }
+
+
+// export const getAverage = (count, callback, ...params) => {
+//   const RAM = <any>[];
+//   const HeapTotal = <any>[];
+//   const HeapUsed = <any>[];
+//   const External = <any>[];
+//   const CPU = <any>[];
+//   const Time = <any>[]
+//   for (let i = 0; i < count; i++) {
+//     const { diffRAM, diffHeapTotal, diffExternal, diffHeapUsed, diffCPU, diffTime } = getPerformance(callback, ...params)
+//     RAM.push(parse(diffRAM, -2))
+//     HeapTotal.push(parse(diffHeapTotal, -2))
+//     HeapUsed.push(parse(diffHeapUsed, -2))
+//     External.push(parse(diffExternal, -4))
+//     CPU.push(diffCPU)
+//     Time.push(diffTime)
+//     sleep(2000);
+//   }
+//   const res = {
+//     RAM: _.mean(RAM) + ' MB',
+//     HeapTotal: _.mean(HeapTotal) + 'MB',
+//     HeapUsed: _.mean(HeapUsed) + 'MB',
+//     External: _.mean(External) + 'Byte',
+//     CPU: _.mean(CPU) + 'ms',
+//     SpendTime: _.mean(Time) + 'ms',
+//   }
+//   console.log(callback.name, ': ', res);
+// }

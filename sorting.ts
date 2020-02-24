@@ -1,4 +1,4 @@
-import { generateNewData, getAverage, getPerformance } from './utils';
+import { generateNewData, getPerformance, test } from './utils';
 import sort from 'fast-sort';
 import _ from 'lodash';
 
@@ -18,13 +18,10 @@ const lodash_sortKeysBy = (data, bys) => {
 
 const normalSort = (data, bys) => _.map((_.orderBy(_.values(data), _.keys(bys), _.values(bys))), obj => obj.key);
 
+
+
 // [key: { key, number}]
 const data = generateNewData(1000000);
+// test([sortKeysBy, lodash_sortKeysBy, normalSort], data, { 'number': 'asc' })
 
-// getAverage(10, sortKeysBy, data,{ 'number': 'asc' })
-// getAverage(10, lodash_sortKeysBy, data,{ 'number': 'asc' })
-// getAverage(10, normalSort, data,{ 'number': 'asc' })
-
-console.log(getPerformance(sortKeysBy, data, { 'number': 'asc' }));
-// console.log(getPerformance(lodash_sortKeysBy, data, { 'number': 'asc' }));
-// console.log(getPerformance(normalSort, data, { 'number': 'asc' }));
+getPerformance(normalSort, data, { 'number': 'asc' })
