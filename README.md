@@ -38,20 +38,49 @@
 - `ts-node sorting.ts`
 
 ### Result
-- `fast-sort`: 5298.712
-- `lodash/sortBy`: 3852.827
+- `sortKeysBy`
+```json
+{ diffRAM: '16 MB',
+  diffHeapTotal: '15 MB',
+  diffHeapUsed: '17 MB',
+  diffExternal: 'NaN undefined',
+  diffCPU: 5057.565,
+  diffTime: 5045 }
+```
+- `lodash_sortKeysBy`
+```json
+{ diffRAM: '117 MB',
+  diffHeapTotal: '114 MB',
+  diffHeapUsed: '128 MB',
+  diffExternal: '0 Byte',
+  diffCPU: 4378.469,
+  diffTime: 3943 }
+```
+- `normalSort`
+```json
+{ diffRAM: '150 MB',
+  diffHeapTotal: '147 MB',
+  diffHeapUsed: '149 MB',
+  diffExternal: '0 Byte',
+  diffCPU: 4222.972,
+  diffTime: 3945 }
+```
 
 ### Choice
-- Lodash/sortBy
+- `sortKeysBy`: **significant** save `memory` in client
 
 ### Utils Cook
 ```javascript
+import sort from 'fast-sort';
 import _ from 'lodash';
-export const lodash_sortKeysBy = (data, bys) => {
+
+// data: {  'a': { a: 2, b: 3 }, 'b': { a: 3, b: 19 }  }
+// bys: { 'a': 'asc','b': 'desc' }
+export const sortKeysBy = (data, bys) => {
   const keys = Object.keys(data);
-  const orders = _.values(bys);
-  const attr_getters = _.map(_.keys(bys), attr => key => _.get(data, [key, attr]))
-  return _.orderBy(keys, attr_getters, orders);
+  const attrs = _.map(bys, (order, attr) => ({ [<string>order]: key => _.get(data, [key, attr]) }));
+  // @ts-ignore
+  return sort(keys).by(attrs);
 }
 ```
 

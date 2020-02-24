@@ -3,7 +3,7 @@ import { update } from 'immutable';
 import produce from 'immer';
 import { update as lpdate } from 'lodash/fp';
 import Immutable from 'seamless-immutable';
-import { generateData, getPerformance } from "./utils";
+import { generateData, getPerformance, getAverage } from "./utils";
 import { set, lensPath } from 'ramda';
 
 // 不可变库updater
@@ -29,17 +29,7 @@ const data = generateData(1000000);
 // console.log(lodashG === data);
 // console.log(seamlessG === data);
 
-
-// 性能测试:
-const getAverage = (count, reducer, data, id) => {
-  const res: any = [];
-  for (let i = 0; i < count; i++) {
-    const a = getPerformance(reducer, data, id)
-    res.push(parseFloat(a))
-  }
-  console.log(reducer.name, ': ', _.mean(res));
-}
-
+// 性能测试
 getAverage(10, es6Reducer, data, '5000')
 getAverage(10, lodashReducer, data, '5000')
 getAverage(10, immutableJsReducer, data, '5000')
