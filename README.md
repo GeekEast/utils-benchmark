@@ -208,3 +208,85 @@ export const sortKeysBy = (data, bys) => {
 }
 ```
 
+
+## Filter Objects
+### Test
+- `ts-node filtering.ts`
+
+### Result
+```json
+------filter_obj result-------
+RAM        :  19 MB
+HeapTotal  :  17 MB
+HeapUsed   :  16 MB
+External   :  NaN undefined
+CPU        :  97.111 ms
+Spend time :  91 ms
+------lodash result-------
+RAM        :  14 MB
+HeapTotal  :  14 MB
+HeapUsed   :  17 MB
+External   :  0 Byte
+CPU        :  62.076 ms
+Spend time :  61 ms
+```
+
+### Choice
+- `lodash`
+
+
+## Transform to Array
+### Test
+```sh
+ts-node getArray.ts
+```
+
+### Result
+```json
+------values result-------
+RAM        :  59 MB
+HeapTotal  :  57 MB
+HeapUsed   :  56 MB
+External   :  0 Byte
+CPU        :  117.734 ms
+Spend time :  118 ms
+------map result-------
+RAM        :  8 MB
+HeapTotal  :  8 MB
+HeapUsed   :  8 MB
+External   :  0 Byte
+CPU        :  29.165 ms
+Spend time :  29 ms
+```
+### Choice
+- Store ids in another place
+- get entities by `_.map(ids, id => data[id])`
+
+## Getter
+### Test
+```sh
+ts-node getter.ts
+```
+
+### Result
+```json
+------getter1 result-------
+RAM        :  56 KB
+HeapTotal  :  0 Byte
+HeapUsed   :  51 KB
+External   :  0 Byte
+CPU        :  2.317 ms
+Spend time :  2 ms
+------getter2 result-------
+RAM        :  4 KB
+HeapTotal  :  0 Byte
+HeapUsed   :  4 KB
+External   :  0 Byte
+CPU        :  0.239 ms
+Spend time :  0 ms
+```
+
+### Choice
+- `lodash`
+
+
